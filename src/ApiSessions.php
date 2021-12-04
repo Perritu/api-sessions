@@ -11,10 +11,12 @@ namespace Perritu;
 class ApiSessions
 {
   /**
-   * @var string Ruta al archivo de sesion. Usar `%s` para indicar el nombre
-   * del archivo temporal.
+   * @var string Ruta al archivo de sesion.
+   *
+   * El primer string `%s` indica la ruta al directorio temporal, el segundo el
+   * id del archivo.
    */
-  static $SESSION_FILE = '%s/%s';
+  static $SESSION_FILE = '%s/perritu_api_sessions/%s';
 
   /**
    * @var int Tiempo de vida de la sesión en segundos.
@@ -117,6 +119,13 @@ class ApiSessions
 
     // Nombre del archivo de sesión.
     $this->sessionFile = sprintf(self::$SESSION_FILE, sys_get_temp_dir(), $id);
+
+    // Se asegura de que el directorio existe.
+    @\mkdir(
+      dirname($this->sessionFile),
+      0777,
+      true
+    );
   }
 
   /**
