@@ -1,0 +1,16 @@
+{
+  "name": "perritu/api-sessions",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Perritu\\ApiSessions\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Angel Garcia",
+      "email": "git@angelgarcia.dev"
+    }
+  ],
+  "require": {}
+}
